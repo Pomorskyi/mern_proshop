@@ -1,52 +1,16 @@
-import { Connection, Request } from 'tedious'
-var config = {
-  server: 'WIN-OANSPC5GDQ3\\proshop_bd',
-  authentication: {
-    type: 'default',
-    options: {
-      userName: 'WIN-OANSPC5GDQ3\\User', // update me
-      password: '', // update me
-    },
-  },
-  options: {
-    database: 'proshop_db',
-  },
-}
-function executeStatement() {
-  const request = new Request("select 42, 'hello world'", function (
-    err,
-    rowCount
-  ) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log(rowCount + ' rows')
-    }
-  })
+import mongoose from 'mongoose'
 
-  request.on('row', function (columns) {
-    columns.forEach(function (column) {
-      console.log(column.value)
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
     })
-  })
 
-  connection.execSql(request)
+    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline)
+  } catch (error) {
+    console.log(`Error: ${error.message}`.red.underline.bold)
+    process.exit(1)
+  }
 }
 
-function con() {
-  var connection = new Connection(config)
-
-  // Setup event handler when the connection is established.
-  connection.on('connect', function (err) {
-    if (err) {
-      console.log('Error: ', err)
-    } else {
-      executeStatement()
-    }
-  })
-
-  // Initialize the connection.
-  connection.connect()
-}
-
-export default con
+export default connectDB
