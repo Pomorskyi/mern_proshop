@@ -1,3 +1,7 @@
+//file for import to db from file and delete from db
+//function import data for console command: npm run data:import
+//function delete data for console command: npm run data:delete
+
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import colors from 'colors'
