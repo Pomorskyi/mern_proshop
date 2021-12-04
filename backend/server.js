@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes)
 
+//here backend server handle errors
 app.use(notFound)
 app.use(errorHandler)
 
