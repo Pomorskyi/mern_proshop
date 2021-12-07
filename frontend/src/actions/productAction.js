@@ -5,6 +5,7 @@ import {
   PRODUCT_LIST_SUCCESS,
 } from '../constants/productConstants'
 
+//export function that will get a list of products from backend using the error which were written earlier such as PRODUCT_LIST_FAIL
 export const listProduct = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
