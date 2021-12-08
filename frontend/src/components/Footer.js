@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
+//footer component for React frotntend
 const Footer = () => {
   return (
     <footer>
