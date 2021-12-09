@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+//Rating component for React frontend
 const Rating = ({ value, text, color }) => {
   return (
     <div className='rating'>
